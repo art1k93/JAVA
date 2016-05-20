@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+
+<MenuBar xmlns:fx="http://javafx.com/fxml" fx:controller="lucene.engine.CtrlMenu"
+	fx:id="menuBar">
+	<menus>
+		<Menu text="File">
+			<items>
+				<MenuItem text="New" onAction="#handleNewAction" />
+				<MenuItem text="Open" onAction="#handleOpenAction" />
+				<MenuItem text="Insert" onAction="#handleInsertAction" />
+				<MenuItem text="Save" onAction="#handleSaveAction" />
+				<MenuItem text="Delete" onAction="#handleDeleteAction" />
+				<MenuItem text="Show" onAction="#handleShowAction" />
+				<SeparatorMenuItem />
+				<MenuItem text="Exit" onAction="#handleExitAction" />
+			</items>
+		</Menu>
+		<Menu text="Edit">
+			<items>
+				<MenuItem text="Copy" />
+				<MenuItem text="Cut" />
+				<SeparatorMenuItem />
+				<MenuItem text="Paste" />
+			</items>
+		</Menu>
+		<Menu text="Help">
+			<items>
+				<MenuItem text="Search" disable="true" />
+				<MenuItem text="Online Manual" visible="false" />
+				<MenuItem text="About" />
+			</items>
+		</Menu>
+	</menus>
+</MenuBar>

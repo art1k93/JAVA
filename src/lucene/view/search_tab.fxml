@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="lucene.engine.CtrlSearch"
+	fx:id="search_tab">
+		<Label text="Search for:" AnchorPane.topAnchor="15.0" AnchorPane.leftAnchor="10.0" />
+		<TextField  fx:id="query_str" promptText="enter a term for search" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="100.0"  />
+		<Button text="Search!" onAction="#searchInit" AnchorPane.topAnchor="10.0" AnchorPane.rightAnchor="10.0"/>
+</AnchorPane>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="lucene.engine.CtrlIndex"
+	fx:id="index_tab">
+
+	<Label text="Select a folder in which an index will be created:"
+		AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0" />
+	<TextField promptText="enter a full path" fx:id="index_dir_path"
+		AnchorPane.topAnchor="40.0" AnchorPane.leftAnchor="10.0" />
+	<Button text="Browse..." onAction="#setIndexDir"
+		AnchorPane.topAnchor="40.0" AnchorPane.rightAnchor="100.0" />
+
+	<Label text="Select a folder with a text data that will be added to index:"
+		AnchorPane.topAnchor="100.0" AnchorPane.leftAnchor="10.0" />
+	<TextField promptText="enter a full path" fx:id="dir_to_index_path"
+		AnchorPane.topAnchor="130.0" AnchorPane.leftAnchor="10.0" />
+	<Button text="Browse..." onAction="#setDirToIndex"
+		AnchorPane.topAnchor="130.0" AnchorPane.rightAnchor="100.0" />
+
+	<Button text="Create/Update index" onAction="#indexInit"
+		AnchorPane.topAnchor="190.0" AnchorPane.leftAnchor="10.0" />
+
+</AnchorPane>
+
