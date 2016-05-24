@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?scenebuilder-stylesheet mainform.css?>
+
+
+<AnchorPane prefHeight="350.0" prefWidth="400.0" styleClass="layout"
+	xmlns:fx="http://javafx.com/fxml" fx:controller="lucene.engine.CtrlFactory">
+
+	<fx:define>
+		<fx:include source="search_tab.fxml" fx:id="search_tab_content" />
+		<fx:include source="index_tab.fxml" fx:id="index_tab_content" />
+	</fx:define>
+
+	<VBox id="vbox" AnchorPane.topAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.leftAnchor="0.0"  >
+			<fx:include source="main_menu.fxml" fx:id="menuBar" />
+	</VBox>
+
+	<VBox id="vbox" AnchorPane.topAnchor="60.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="10.0">
+
+		<TabPane fx:id="main_tabpane" minHeight="250" minWidth="400">
+			<tabs>
+				<Tab text="Search" fx:id="search_tab" content="$search_tab_content"
+					closable="false" />
+				<Tab text="Index" fx:id="index_tab" content="$index_tab_content"
+					closable="false" />
+			</tabs>
+		</TabPane>
+
+	</VBox>
+
+	<stylesheets>
+		<URL value="@css/main-form.css" />
+	</stylesheets>
+</AnchorPane>

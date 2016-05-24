@@ -35,7 +35,7 @@ public class CtrlSearch implements Initializable {
 	 */
 	@FXML
 	private void searchInit(final ActionEvent event) {
-		CtrlMyNews.searchInIndex("C:\\Users\\admin\\workspace\\LSD\\index", query_str.getText());
+		CtrlMyNews.searchInIndex(CtrlIndex.getIndexDir(), query_str.getText());
 	}
 
 	@Override

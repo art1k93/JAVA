@@ -27,9 +27,22 @@ import javafx.scene.input.KeyEvent;
 
 public class CtrlIndex implements Initializable {
 
-	private final StringProperty index_dir = new SimpleStringProperty(this, "index_dir", "");
-	private final StringProperty dir_to_index = new SimpleStringProperty(this, "dir_to_index", "");
+	private static String index_dir = null;
+	private static String dir_to_index = null;
 
+	private static CtrlIndex instance;
+
+	public static synchronized CtrlIndex getInstance() {
+		if (instance == null) {
+			instance = new CtrlIndex();
+		}
+		return instance;
+	}
+	
+	public static String getIndexDir() {
+		return index_dir;
+	}
+	
 	@FXML // fx:id="index_tab"
 	private AnchorPane index_tab;
 
@@ -56,7 +69,7 @@ public class CtrlIndex implements Initializable {
 			index_dir_path.setText("No Directory selected");
 		} else {
 			index_dir_path.setText(selectedDir.getAbsolutePath());
-			index_dir.set(index_dir_path.getText());
+			index_dir = index_dir_path.getText();
 		}
 	}
 
@@ -76,7 +89,7 @@ public class CtrlIndex implements Initializable {
 			dir_to_index_path.setText("No Directory selected");
 		} else {
 			dir_to_index_path.setText(selectedDir.getAbsolutePath());
-			dir_to_index.set(dir_to_index_path.getText());
+			dir_to_index = dir_to_index_path.getText();
 		}
 	}
 
@@ -88,7 +101,7 @@ public class CtrlIndex implements Initializable {
 	 */
 	@FXML
 	private void indexInit(final ActionEvent event) {
-		CtrlMyNews.addToIndex(index_dir.get(), dir_to_index.get());
+		CtrlMyNews.addToIndex(index_dir, dir_to_index);
 	}
 
 	@Override

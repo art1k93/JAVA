@@ -9,9 +9,23 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.MenuBar;
 
 public class CtrlMenu implements Initializable {
+	
+    /**************************************************************************
+     * 
+     * Fields
+     * 
+     **************************************************************************/
 
 	@FXML // fx:id="menuBar"
 	private MenuBar menuBar;
+	
+	
+	
+    /**************************************************************************
+     * 
+     * Private Implementation
+     * 
+     **************************************************************************/
 
 	/**
 	 * Handle action related to "New" menu item.
@@ -93,6 +107,14 @@ public class CtrlMenu implements Initializable {
 	private void handleExitAction(final ActionEvent event) {
 		System.exit(0);
 	}
+	
+	
+	
+    /**************************************************************************
+     * 
+     * Puplic Implementation
+     * 
+     **************************************************************************/
 
 	@Override
 	public void initialize(URL fxmlFileLocation, ResourceBundle resources) {

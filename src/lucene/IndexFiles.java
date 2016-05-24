@@ -28,13 +28,19 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Index all text files under a directory.
@@ -51,11 +57,14 @@ public class IndexFiles {
      * Index all text files under a directory.
      */
     public static void indexMain(String[] args) {
+    	
+    	Map<String, String> rez_args = new HashMap<String, String>();
+    	Results r = new Results();
+    	rez_args.put("-status", "false");
 
         String usage = "java org.apache.lucene.demo.IndexFiles" + " [-index INDEX_PATH] [-docs DOCS_PATH] [-update]\n\n"
                 + "This indexes the documents in DOCS_PATH, creating a Lucene index"
                 + "in INDEX_PATH that can be searched with SearchFiles";
-
 
         String indexPath = "index";
         String docsPath = null;
@@ -73,22 +82,22 @@ public class IndexFiles {
         }
 
         if (docsPath == null) {
+        	rez_args.put("-mes", "Usage: " + usage);
         	System.err.println("Usage: " + usage);
-			System.exit(1);
+        	r.showResults(rez_args);
         }
 
         final Path docDir = Paths.get(docsPath);
         if (!Files.isReadable(docDir)) {
-
-        	System.out.println("Document directory '" + docDir.toAbsolutePath()
+        	rez_args.put("-mes", "Document directory '" + docDir.toAbsolutePath()
 			+ "' does not exist or is not readable, please check the path");
-        	System.exit(1);
-        	
+        	r.showResults(rez_args);
         }
 
         Date start = new Date();
         try {
-        	System.out.println("Indexing to directory '" + indexPath + "'...");
+        	rez_args.put("-status", "true");
+        	String mes = "Indexing to directory '" + indexPath + "'...";
 
             Directory dir = FSDirectory.open(Paths.get(indexPath));
             Analyzer analyzer = new StandardAnalyzer();
@@ -124,12 +133,14 @@ public class IndexFiles {
             writer.close();
 
             Date end = new Date();
-            System.out.println(end.getTime() - start.getTime() + " total milliseconds");
-
+            mes += "\n" + ( end.getTime() - start.getTime() ) + " total milliseconds";
+            rez_args.put("-mes", mes);
         } catch (IOException e) {
-        	System.out.println(" caught a " + e.getClass() + "\n with message: " + e.getMessage());
+        	rez_args.put("-mes", " caught a " + e.getClass() + "\n with message: " + e.getMessage());
         }
 
+    	r.showResults(rez_args);
+    	
     }
 
     /**
